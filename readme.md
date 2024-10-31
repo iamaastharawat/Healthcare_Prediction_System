@@ -4,3 +4,5 @@ Uses Random Forest Classifier for prediction
 Uses NodeJS and Express for backend development
 Uses MongoDB database
 Uses flask for integrating Python with JS.
+
+Wondering how to use the repo? Have a look at deployment/setup.md and get started.
