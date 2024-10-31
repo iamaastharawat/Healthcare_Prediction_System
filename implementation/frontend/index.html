@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Healthcare Prediction System</title>
+    <link
+      rel="icon"
+      href="images/favicon.png"
+      type="image/x-icon"
+      border-radius:
+      50%;
+    />
+    <link rel="stylesheet" href="./styles/home.css" />
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0; /* Remove default margin */
+        padding: 0; /* Remove default padding */
+      }
+
+      header {
+        display: flex;
+        align-items: center; /* Center items vertically */
+        justify-content: center; /* Center header content */
+        padding: 20px; /* Add padding for spacing */
+        position: relative; /* Position relative for absolute children */
+      }
+
+      .favicon {
+        width: 32px;
+        height: 32px;
+      }
+
+      .favicon-container {
+        position: absolute; /* Position favicon absolutely */
+        left: 20px; /* Distance from the left */
+        top: 50%; /* Center vertically */
+        transform: translateY(-50%); /* Center alignment */
+      }
+
+      .title-container {
+        flex-grow: 1; /* Allow title to take available space */
+        text-align: center; /* Center the title */
+      }
+
+      h1 {
+        margin: 0; /* Reset margin for h1 */
+      }
+
+      #auth-buttons {
+        margin-left: auto; /* Align buttons to the right */
+      }
+
+      .step {
+        position: relative;
+        display: inline-block;
+        margin: 0 20px;
+      }
+
+      .arrow {
+        position: absolute;
+        width: 100px;
+        height: 100px;
+        background-image: url('./images/arrow-image.png');
+        background-size: contain;
+        background-repeat: no-repeat;
+      }
+
+      .arrow1 {
+        top: 50%;
+        left: 90%;
+        transform: translateY(-50%);
+      }
+
+      .arrow2 {
+        top: 50%;
+        left: 90%;
+        transform: translateY(-50%);
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="favicon-container">
+        <img
+          src="images/favicon.png"
+          alt="Favicon"
+          style="width: 64px; height: 64px"
+        />
+      </div>
+      <div class="title-container">
+        <h1>Welcome to the Healthcare Prediction System</h1>
+      </div>
+      <div id="auth-buttons" style="margin-left: auto">
+        <button id="login-btn">Login</button>
+        <button id="register-btn" onclick="navigateTo('register')">
+          Register
+        </button>
+        <button
+          id="profile-btn"
+          style="display: none"
+          onclick="navigateTo('profile')"
+        >
+          Profile
+        </button>
+        <button id="logout-btn" style="display: none" onclick="logout()">
+          Logout
+        </button>
+        <button
+          id="userMgmt-btn"
+          style="display: none"
+          onclick="navigateTo('userMgmt')"
+        >
+          User Mgmt
+        </button>
+        <button
+          id="contentMgmt-btn"
+          style="display: none"
+          onclick="navigateTo('contentMgmt')"
+        >
+          Content Mgmt
+        </button>
+      </div>
+    </header>
+
+    <div id="content">
+      <section id="about">
+        <h2>About the Project</h2>
+        <p>
+          Our system uses advanced algorithms to predict potential health risks
+          based on your vital statistics. Submit your health metrics and receive
+          real-time predictions and recommendations.
+        </p>
+      </section>
+      <!-- Sections for Guest Users -->
+      <section id="how-it-works">
+        <h2>How It Works</h2>
+        <div class="steps">
+          <div class="step">
+            <img src="./images/step1.png" alt="Step 1" />
+            <div class="arrow arrow1"></div>
+            <p>Enter your health metrics</p>
+          </div>
+          <div class="step">
+            <img src="./images/step2.png" alt="Step 2" />
+            <div class="arrow arrow2"></div>
+            <p>Get a health prediction</p>
+          </div>
+          <div class="step">
+            <img src="./images/step3.png" alt="Step 3" />
+            <p>Receive personalized tips</p>
+          </div>
+        </div>
+      </section>
+      <br />
+      <section id="benefits">
+        <h2>Why Use Our System?</h2>
+        <p>
+          Stay ahead of potential health issues with real-time insights based on
+          your vital statistics. Our system uses advanced algorithms to offer
+          tips for improving your health.
+        </p>
+      </section>
+
+      <section id="health-form-section" style="display: none">
+        <h2>Enter Health Metrics</h2>
+        <form id="health-form">
+          <input
+            type="number"
+            id="heartRate"
+            placeholder="Heart Rate"
+            required
+          />
+          <input
+            type="text"
+            id="bloodPressure"
+            placeholder="Blood Pressure (systolic/diastolic)"
+            pattern="^\d{2,3}/\d{2,3}$"
+            required
+            oninput="validateBloodPressureInput(this)"
+          />
+          <input
+            type="number"
+            id="bodyTemperature"
+            placeholder="Body Temperature (°F)"
+            step="0.1"
+            min="95"
+            max="105"
+            required
+          />
+          <input
+            type="number"
+            id="spo2"
+            placeholder="SpO2 Level (%)"
+            required
+          />
+          <input
+            type="number"
+            id="respiratoryRate"
+            placeholder="Respiratory Rate"
+            required
+          />
+          <input
+            type="number"
+            id="bloodGlucoseLevel"
+            placeholder="Blood Glucose Level"
+            required
+          />
+          <input
+            type="number"
+            id="averageSleepHours"
+            placeholder="Average Sleep Hours"
+            step="0.1"
+            min="0"
+            max="24"
+            required
+          />
+          <input type="number" id="weight" placeholder="Weight (kg)" required />
+          <input type="number" id="height" placeholder="Height (cm)" required />
+          <input type="number" id="age" placeholder="Age" required />
+          <button type="submit">Submit</button>
+        </form>
+        <div id="result"></div>
+        <div id="prediction-result"></div>
+        <ul id="tips-result"></ul>
+      </section>
+    </div>
+
+    <script src="app.js"></script>
+    <script>
+      function toggleVisibility() {
+        const howItWorksSection = document.getElementById('how-it-works');
+        const benefitsSection = document.getElementById('benefits');
+        const healthFormSection = document.getElementById(
+          'health-form-section'
+        );
+        const profileBtn = document.getElementById('profile-btn');
+        const logoutBtn = document.getElementById('logout-btn');
+
+        if (
+          profileBtn.style.display === 'block' ||
+          logoutBtn.style.display === 'block'
+        ) {
+          howItWorksSection.style.display = 'none';
+          benefitsSection.style.display = 'none';
+          healthFormSection.style.display = 'block';
+        } else {
+          howItWorksSection.style.display = 'block';
+          benefitsSection.style.display = 'block';
+          healthFormSection.style.display = 'none';
+        }
+      }
+
+      document.addEventListener('DOMContentLoaded', () => {
+        toggleVisibility();
+      });
+
+      function validateBloodPressureInput(input) {
+        const pattern = /^\d{2,3}\/\d{2,3}$/;
+        if (!pattern.test(input.value)) {
+          input.setCustomValidity(
+            'Please enter in systolic/diastolic format, e.g., 120/80'
+          );
+        } else {
+          input.setCustomValidity(''); // Clear the custom message when the input is valid
+        }
+      }
+    </script>
+  </body>
+</html>

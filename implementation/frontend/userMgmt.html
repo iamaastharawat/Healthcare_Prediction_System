@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>User Management</title>
+    <link rel="icon" href="images/favicon.png" type="image/x-icon" />
+    <link rel="stylesheet" href="./styles/admin.css" />
+  </head>
+  <body>
+    <a href="index.html" class="home-button">Home</a>
+    <div class="container">
+      <h1>User Management</h1>
+      <div class="user-list">
+        <table id="userTable">
+          <thead>
+            <tr>
+              <th>Username</th>
+              <th>Gender</th>
+              <th>Role</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- User rows will be inserted here dynamically -->
+          </tbody>
+        </table>
+      </div>
+      <!-- Modal for updating user role -->
+      <div id="updateModal" class="modal" style="display: none">
+        <div class="modal-content">
+          <span id="closeModal" class="close">&times;</span>
+          <h2>Update User Role</h2>
+          <form id="updateUserForm">
+            <label for="role">Select New Role:</label>
+            <select id="role" name="role">
+              <option value="user">User</option>
+              <option value="admin">Admin</option>
+            </select>
+            <button type="submit">Update</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <script src="./scripts/userMgmt.js"></script>
+  </body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register</title>
+    <link rel="icon" href="images/favicon.png" type="image/x-icon" />
+    <link rel="stylesheet" href="./styles/register.css" />
+  </head>
+  <body>
+    <a href="/index.html" class="home-button">Home</a>
+    <h1>Register</h1>
+    <form id="register-form">
+      <input type="text" id="username" placeholder="Username" required />
+      <input type="password" id="password" placeholder="Password" required />
+      <input type="text" id="gender" placeholder="Gender" required />
+      <button type="submit">Register</button>
+    </form>
+    <div id="register-result"></div>
+
+    <p>Already have an account? <a href="login.html">Login here</a></p>
+
+    <script>
+      document
+        .getElementById('register-form')
+        .addEventListener('submit', async (e) => {
+          e.preventDefault();
+
+          const newUser = {
+            username: document.getElementById('username').value,
+            password: document.getElementById('password').value,
+            gender: document.getElementById('gender').value,
+          };
+
+          try {
+            const response = await fetch(
+              'http://127.0.0.1:5000/api/users/register',
+              {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(newUser),
+              }
+            );
+
+            const data = await response.json();
+
+            if (response.ok) {
+              document.getElementById('register-result').innerText =
+                'Registration successful!';
+              // Redirect to login page after successful registration
+              window.location.href = 'login.html';
+            } else {
+              document.getElementById(
+                'register-result'
+              ).innerText = `Registration failed: ${data.error}`;
+            }
+          } catch (error) {
+            console.error('Error during registration:', error);
+            document.getElementById('register-result').innerText =
+              'Error during registration';
+          }
+        });
+    </script>
+  </body>
+</html>

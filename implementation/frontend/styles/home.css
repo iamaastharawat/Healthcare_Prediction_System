@@ -1,0 +1,310 @@
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  margin-top: 50px;
+}
+
+form {
+  display: inline-block;
+  text-align: left;
+}
+
+input {
+  display: block;
+  margin-bottom: 10px;
+  padding: 10px;
+  width: 200px;
+}
+
+button {
+  padding: 10px 20px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background-color: #f0f8ff;
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+}
+
+header {
+  width: 100%;
+  background-color: #007acc;
+  color: #fff;
+  padding: 1rem;
+  text-align: center;
+  position: relative;
+}
+
+header h1 {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black,
+    1px 1px 0 black;
+}
+
+#auth-buttons {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 1rem;
+}
+
+#auth-buttons button {
+  background-color: #fff;
+  color: #007acc;
+  border: 1px solid #000000;
+  padding: 0.5rem 1rem;
+  margin: 0 0.2rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+#auth-buttons button:hover {
+  background-color: #007acc;
+  color: #fff;
+}
+
+@media (max-width: 768px) {
+  #auth-buttons {
+    flex-direction: column;
+    align-items: center;
+    margin-top: 1rem;
+  }
+
+  #auth-buttons button {
+    margin-bottom: 0.5rem;
+  }
+}
+
+#content {
+  width: 80%;
+  max-width: 1000px;
+  text-align: center;
+  margin-top: 2rem;
+}
+
+#about {
+  background-image: url('../images/healthcare-bg.jpg');
+  background-size: cover;
+  background-position: center;
+  padding: 2rem;
+  border-radius: 8px;
+  color: #fff;
+  margin-bottom: 2rem;
+}
+
+#about h2 {
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+  text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black,
+    1px 1px 0 black;
+}
+
+#about p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-top: 1rem;
+  color: #f8f8ff;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 1rem;
+  border-radius: 5px;
+}
+
+#how-it-works {
+  padding: 2rem;
+  background-color: #eef6fc;
+  margin-bottom: 2rem;
+  border-radius: 8px;
+  text-align: center;
+}
+
+#how-it-works h2 {
+  font-size: 1.8rem;
+  color: #007acc;
+  margin-bottom: 1rem;
+}
+
+.steps {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 1rem;
+}
+
+.step {
+  width: 30%;
+  text-align: center;
+}
+
+.step img {
+  width: 160px;
+  height: 160px;
+  margin-bottom: 0.5rem;
+}
+
+#benefits {
+  background-color: #fff;
+  padding: 1.5rem;
+  border-radius: 8px;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+#benefits h2 {
+  color: #007acc;
+  margin-bottom: 0.5rem;
+}
+
+#benefits p {
+  color: #333;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+#health-form-section {
+  background-color: #e6f2ff;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#health-form-section h2 {
+  color: #007acc;
+  margin-bottom: 1rem;
+}
+
+#health-form {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+#health-form input {
+  width: 48%;
+  padding: 0.7rem;
+  margin: 0.5rem 0;
+  border-radius: 5px;
+  border: 1px solid #c4c4c4;
+  transition: border-color 0.3s;
+}
+
+#health-form input:focus {
+  border-color: #007acc;
+  outline: none;
+}
+
+#health-form button {
+  width: 100%;
+  padding: 0.8rem;
+  background-color: #007acc;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.1rem;
+  margin-top: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+#health-form button:hover {
+  background-color: #005f99;
+}
+
+#result {
+  margin-top: 1.5rem;
+  padding: 1rem;
+  background-color: #f9f9f9;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+}
+
+@media (max-width: 768px) {
+  #health-form input {
+    width: 100%;
+  }
+
+  #auth-buttons {
+    position: static;
+    margin-top: 1rem;
+  }
+}
+
+#prediction-result {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  color: #007acc;
+  background-color: #8cd4e7;
+  padding: 1rem;
+  margin: 1.5rem 0;
+  border-radius: 8px;
+  border-left: 0px solid #88c6ef;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+  text-align: center;
+}
+
+#prediction-result:hover,
+#tips-result:hover {
+  transform: scale(1.02);
+}
+
+#tips-result {
+  list-style-type: none;
+  padding: 0;
+  margin-top: 1rem;
+  font-size: 1.2rem;
+  color: #1d7339;
+  background-color: #8ce987;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+#tips-result::before {
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: #007acc;
+  display: block;
+  margin-bottom: 0.5rem;
+  transition: transform 0.3s ease;
+}
+
+#tips-result li {
+  padding: 0.5rem 0;
+  font-size: 1rem;
+  color: #333;
+  border-bottom: 1px solid #d9e9f8;
+}
+
+#tips-result li:last-child {
+  border-bottom: none;
+}
+
+#prediction-result,
+#tips-result {
+  animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

@@ -1,0 +1,10 @@
+1. Input Health Metrics
+2. Health Issue Prediction
+3. Historical Health Data
+4. Health Tips and Recommendations
+5. User Registration and Authentication
+6. User Profile Management
+7. Notification/Alert System
+8. Feedback and Explanation of Predictions
+9. Export Health Data
+10. ML Model Updates

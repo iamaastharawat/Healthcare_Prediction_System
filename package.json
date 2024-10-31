@@ -1,0 +1,37 @@
+{
+  "name": "se_project",
+  "version": "1.0.0",
+  "description": "Health Risk Prediction System",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "trainData": "python3 ./implementation/ml/dataset.py",
+    "train": "python3 ./implementation/ml/train_model.py",
+    "insertData": "node ./implementation/backend/insertData.js",
+    "backend": "nodemon ./implementation/backend/app.js",
+    "frontend": "serve -s ./implementation/frontend",
+    "flask": "waitress-serve --port=5001 implementation.ml.app:app",
+    "unitTestModel": "python3 -m unittest tests.unit_tests.test_models"
+  },
+  "author": "Ayush Singh Rajput",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "body-parser": "^1.20.3",
+    "connect-mongodb-session": "^5.0.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.1",
+    "express-mongo-sanitize": "^2.2.0",
+    "express-rate-limit": "^7.4.1",
+    "express-session": "^1.18.1",
+    "hpp": "^0.2.3",
+    "mongodb": "^6.9.0",
+    "mongoose": "^8.7.1",
+    "nodemon": "^3.1.7",
+    "xss-advanced": "^1.0.2"
+  }
+}

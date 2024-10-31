@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Profile</title>
+    <link rel="icon" href="images/favicon.png" type="image/x-icon" />
+    <link rel="stylesheet" href="./styles/profile.css" />
+  </head>
+  <body>
+    <div class="header">
+      <a href="index.html">
+        <button class="home-button">Home</button>
+      </a>
+    </div>
+    <h1 class="profile-title">User Profile</h1>
+    <div id="user-info" class="info-box">
+      <!-- User personal info will be displayed here -->
+    </div>
+    <h2 class="health-history">Health History</h2>
+    <div id="history" class="history-container">
+      <!-- Health history will be displayed here -->
+    </div>
+
+    <script>
+      async function loadProfile() {
+        const userId = localStorage.getItem('userId');
+        if (!userId) {
+          alert('User not logged in');
+          return;
+        }
+
+        try {
+          // Fetch user personal info
+          const userInfoResponse = await fetch(
+            `http://localhost:5000/api/users/${userId}`
+          );
+          const userInfo = await userInfoResponse.json();
+
+          // Display user personal info
+          const userInfoContainer = document.getElementById('user-info');
+          userInfoContainer.innerHTML = `
+              <p><strong>Username:</strong> ${userInfo.username}</p>
+              <p><strong>Gender:</strong> ${userInfo.gender}</p>
+          `;
+
+          // Fetch health history
+          const historyResponse = await fetch(
+            `http://localhost:5000/api/health/${userId}/history`
+          );
+          const history = await historyResponse.json();
+
+          // Display health history
+          const historyContainer = document.getElementById('history');
+          historyContainer.innerHTML = '';
+          history.forEach((entry) => {
+            const card = document.createElement('div');
+            card.className = 'history-card';
+            const date = new Date(entry.timestamp);
+            const formattedDate = date.toLocaleDateString();
+            const formattedTime = date.toLocaleTimeString([], {
+              hour: '2-digit',
+              minute: '2-digit',
+            });
+            card.innerHTML = `
+              <p><strong>Date:</strong> ${formattedDate}</p>
+              <p><strong>Time:</strong> ${formattedTime}</p>
+              <p><strong>Heart Rate:</strong> ${entry.heartRate}</p>
+              <p><strong>Blood Pressure:</strong> ${entry.bloodPressure}</p>
+              <p><strong>Temperature:</strong> ${entry.bodyTemperature}</p>
+              <p><strong>SpO2:</strong> ${entry.spo2}</p>
+              <p><strong>Respiratory Rate:</strong> ${entry.respiratoryRate}</p>
+              <p><strong>Blood Glucose Level:</strong> ${entry.bloodGlucoseLevel}</p>
+              <p><strong>Average Sleep Hours:</strong> ${entry.averageSleepHours}</p>
+              <p><strong>Weight:</strong> ${entry.weight}</p>
+              <p><strong>Height:</strong> ${entry.height}</p>
+              <p><strong>Age:</strong> ${entry.age}</p>
+              <p><strong>Prediction:</strong> ${entry.prediction}</p>
+            `;
+            historyContainer.appendChild(card);
+          });
+        } catch (error) {
+          console.error('Error loading profile and history:', error);
+        }
+      }
+
+      document.addEventListener('DOMContentLoaded', loadProfile);
+    </script>
+  </body>
+</html>

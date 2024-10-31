@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Content Management</title>
+    <link rel="icon" href="images/favicon.png" type="image/x-icon" />
+    <link rel="stylesheet" href="./styles/admin.css" />
+  </head>
+  <body>
+    <a href="index.html" class="home-button">Home</a>
+    <div class="container">
+      <h1>Content Management</h1>
+      <form id="addTipForm">
+        <label for="condition">Health Condition:</label>
+        <select id="condition" name="condition">
+          <option value="anemia">Anemia</option>
+          <option value="diabetes">Diabetes</option>
+          <option value="obesity">Obesity</option>
+          <option value="fever/infection">Fever/Infection</option>
+          <option value="heart_disease">Heart Disease</option>
+          <option value="sleep_disorder">Sleep Disorder</option>
+          <option value="healthy">Healthy</option>
+          <option value="hypertension">Hypertension</option>
+          <option value="respiratory_issue">Respiratory Issue</option>
+          <option value="hypotension">Hypotension</option>
+          <option value="asthma">Asthma</option>
+        </select>
+
+        <label for="tipText">New Health Tip:</label>
+        <input
+          type="text"
+          id="tipText"
+          name="tipText"
+          placeholder="Enter health tip"
+          required
+        />
+        <button type="submit" id="tipButton">Add Tip</button>
+      </form>
+
+      <div class="content-list">
+        <h2>Health Tips</h2>
+        <ul id="tipList">
+          <!-- List items for health tips will be added here dynamically -->
+        </ul>
+      </div>
+    </div>
+    <script src="./scripts/contentMgmt.js"></script>
+  </body>
+</html>
