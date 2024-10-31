@@ -3,13 +3,13 @@ import pandas as pd
 import os
 
 # Number of synthetic data points
-n = 2000  
+n = 5000  
 
 # Generate synthetic data with relationships
 heartRate = np.random.normal(loc=72, scale=10, size=n).clip(60, 100)
 bloodPressureSystolic = np.random.normal(loc=120, scale=15, size=n).clip(90, 200)
 bloodPressureDiastolic = np.random.normal(loc=80, scale=10, size=n).clip(60, 120)
-bodyTemperature = np.random.normal(loc=98.6, scale=0.5, size=n).clip(97.7, 99.5)
+bodyTemperature = np.random.normal(loc=98.6, scale=1.5, size=n).clip(97.7, 104.5)
 spo2 = np.random.uniform(90, 100, size=n)
 respiratoryRate = np.random.normal(loc=16, scale=2, size=n).clip(12, 30)
 bloodGlucoseLevel = np.random.normal(loc=100, scale=15, size=n).clip(70, 180)
@@ -32,7 +32,7 @@ for i in range(n):
         health_issues.append('heart_disease')
     elif weight[i] > 80 and averageSleepHours[i] < 6:
         health_issues.append('sleep_disorder')
-    elif (bodyTemperature[i] > 99.5 or spo2[i] < 95) and np.random.rand() > 0.5:
+    elif (bodyTemperature[i] > 99.5):
         health_issues.append('fever/infection')
     elif age[i] < 30 and spo2[i] < 95:
         health_issues.append('respiratory_issue')
