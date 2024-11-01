@@ -1,4 +1,4 @@
 node_modules
 *.env
-health_model.pkl
-synthetic_health_data.csv
+implementation/ml/health_model.pkl
+implementation/ml/synthetic_health_data.csv
