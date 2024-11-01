@@ -1,0 +1,16 @@
+1.	Update UI Based on Login Status:
+•	Use updateUI() to adjust visibility for UI elements (login, register, profile, admin options) based on login status and user role stored in localStorage.
+2.	Set Up Event Listeners:
+•	On DOMContentLoaded, check login status, call updateUI(), and set up click events for login, logout, and profile buttons.
+3.	Handle Login:
+•	loginUser() sends credentials to the backend, stores user info in localStorage if successful, updates UI, and navigates to the home page.
+4.	Handle Logout:
+•	logout() sends a logout request, clears user info from localStorage, updates UI, and redirects to the home page.
+5.	Load User Profile Data:
+•	loadUserProfile() fetches and displays the user’s health history from the backend
+6.	Handle Health Metrics Submission:
+•	setupHealthFormListener() listens for form submission, retrieves metrics, sends data to the backend, and displays predictions and tips in the UI
+7.	Navigate to Pages:
+•	navigateTo() redirects to specified pages (e.g., home after login)
+8.	Initialize Health Form Listener:
+•	Set up health form listener on DOMContentLoaded

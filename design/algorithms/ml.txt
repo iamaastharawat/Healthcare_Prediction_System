@@ -1,26 +1,16 @@
-1.	Load and Preprocess the Data
-1.1.	Read the dataset from synthetic_health_data.csv
-1.2.	Separate features (X: health metrics) and target variable (y: health issue)
-1.3.	Split the dataset into training and testing sets using an 80:20 ratio
-2.	Train the machine learning model
-2.1.	Initialize the random forest classifier with the following parameters:
-2.1.1.	 n_estimators: 100 (number of decision trees)
-2.1.2.	 random_state: 42 (for reproducibility)
-2.2.	Train the model using the training data (X_train and y_train)
-2.3.	Evaluate the model by making predictions on the test set (X_test) and calculate the accuracy
-2.4.	Save the trained model as health_model.pkl using joblib.
-3.	Build a prediction function (API integration)
-3.1.	Load the trained model (health_model.pkl) in the predict.py file
-3.2.	Define a function predict_health_condition(metrics) to:
-3.2.1.	 Accept a dictionary of input health metrics
-3.2.2.	Convert the input data to a DataFrame format to match the model's expected input
-3.2.3.	 Use the model.predict() function to generate the health issue prediction
-4.	Expose the Prediction Function through a Flask API
-4.1.	Create a Flask app in app.py to handle HTTP POST requests at the /predict endpoint
-4.2.	Receive input data (in JSON format) from the client
-4.3.	Extract the input features from the JSON request and call the predict_health_condition() function
-4.4.	Return the predicted health issue as a JSON response
-
-
-
-
+1.	Load Dataset:
+1.1.	Load synthetic_health_data.csv, containing health metrics and associated health issues, into a DataFrame.
+1.2.	Separate the features (X) and labels (y) for model training.
+2.	Balance Dataset Using SMOTE:
+2.1.	Apply SMOTE (Synthetic Minority Over-sampling Technique) to the features and labels to balance classes and avoid bias toward more frequent health issues.
+3.	Split Dataset:
+3.1.	Split the balanced data into training and testing sets, with 20% reserved for testing.
+4.	Hyperparameter Tuning Using GridSearchCV:
+4.1.	Define a grid of parameters to optimize the RandomForestClassifier model.
+4.2.	Use GridSearchCV with a five-fold cross-validation approach, optimizing for weighted F1 score.
+4.3.	Fit RandomForestClassifier with class weights balanced to handle any minor class imbalances.
+5.	Select Best Model:
+5.1.	Obtain the best model based on cross-validation results from GridSearchCV.
+5.2.	Use this model to make predictions on the test set.
+6.	Save Model:
+6.1.	Save the trained model as health_model.pkl for future use.
