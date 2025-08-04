@@ -51,7 +51,7 @@ router.post('/add', async (req, res) => {
 
     // Run the prediction script
     exec(
-      'python3 ./implementation/ml/predict.py',
+      'python ./implementation/ml/predict.py',
       {
         env: { ...process.env, ...inputFeatures }, // Pass features as environment variables
       },
@@ -132,7 +132,7 @@ router.post('/predict', async (req, res) => {
   try {
     // Run the prediction script
     exec(
-      'python3 ./implementation/ml/predict.py',
+      'python ./implementation/ml/predict.py',
       {
         env: { ...process.env, ...inputFeatures }, // Pass features as environment variables
       },

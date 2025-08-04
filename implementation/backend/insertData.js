@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
-const { HealthTip } = require('./models/models');
-const { User } = require('./models/models');
+// const { HealthTip } = require('./models/models');
+const HealthTip = require('./models/tipModel');
+const User  = require('./models/userModel');
 const bcrypt = require('bcrypt');
 const dotenv = require('dotenv');
 dotenv.config({ path: __dirname + '/config.env' });
